@@ -1,6 +1,6 @@
 from flask import Flask, request, json
 from flask_restful import Resource, Api
-from habilidades import habilidades
+from habilidades import habilidades, put_del
 
 app = Flask(__name__)
 api = Api(app)
@@ -26,7 +26,7 @@ class Desenvolvedor(Resource):
 
     def put(self, id):
         dados = json.loads (request.data)
-        desenvolvedores[id] == dados
+        desenvolvedores[id] = dados
         return dados
 
     def delete(self, id):
@@ -49,6 +49,7 @@ class ListaDesenvolvedores(Resource):
 
 api.add_resource(Desenvolvedor, '/dev/<int:id>/')
 api.add_resource(ListaDesenvolvedores, '/dev/')
-api.add_resource(habilidades, '/habilidades/')
+api.add_resource(habilidades,'/habilidades/')
+api.add_resource(put_del, '/habilidades/<int:id>/')
 if __name__ == '__main__':
-    app.run(port=5001)
+    app.run(port=5002)
