@@ -9,12 +9,17 @@ class habilidades(Resource):
 
     def post(self):
         dados = json.loads(request.data)
+        if dados['lista_habilidades'] in lista_habilidades:
+            return {"mensagem": "Essa  habilidade ja existe na lista"}, 400
+
+        dados = json.loads(request.data)
         posicao = len(lista_habilidades)
         dados['id'] = posicao
         lista_habilidades.append(dados['lista_habilidades'])
         return lista_habilidades[posicao]
 
 class put_del(Resource):
+
     def delete(self, id):
         lista_habilidades.pop(id)
         return {

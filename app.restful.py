@@ -47,6 +47,9 @@ class ListaDesenvolvedores(Resource):
         return desenvolvedores[posicao]
 
 
+
+
+
 api.add_resource(Desenvolvedor, '/dev/<int:id>/')
 api.add_resource(ListaDesenvolvedores, '/dev/')
 api.add_resource(habilidades,'/habilidades/')
